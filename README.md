@@ -15,7 +15,7 @@ cd data/
 php generate_csv.php
 ```
 
-## Show sample of dataset after normalization
+## Show samples after normalization
 
 ```
 python show_dataset.py
