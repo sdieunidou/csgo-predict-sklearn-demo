@@ -32,6 +32,6 @@ python show_dataset.py
 ## Accuray without any features
 
 ```
-python show_dataset.py
+python accuracy_without_features.py
 Accuracy: 56.7%
 ```
