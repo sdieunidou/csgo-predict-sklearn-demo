@@ -40,5 +40,5 @@ Accuracy: 56.7%
 
 ```
 python accuracy_feature_ranking.py
-Accuracy: 57.9%
+Accuracy: 57.0%
 ```

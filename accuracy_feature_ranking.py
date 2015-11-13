@@ -44,7 +44,7 @@ for index, row in dataset.iterrows():
    team2_rank = False;
 
    if ranking.has_key(home_team):
-      team1_rank = ranking.has_key(home_team)
+      team1_rank = ranking[home_team]
 
    if ranking.has_key(visitor_team):
       team2_rank = ranking[visitor_team]
