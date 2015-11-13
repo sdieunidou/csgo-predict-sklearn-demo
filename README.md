@@ -29,9 +29,16 @@ python show_dataset.py
 5   mirage  FlipSid3        16           SK         7    False     True        False        True
 ```
 
-## Accuray without any features
+## Accuracy with last win feature
 
 ```
-python accuracy_without_features.py
+python accuracy_feature_lastwin.py
 Accuracy: 56.7%
+```
+
+## Accuracy with last win feature + hltv top ranking
+
+```
+python accuracy_feature_ranking.py
+Accuracy: 57.9%
 ```
