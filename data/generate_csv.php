@@ -22,11 +22,11 @@ fputcsv($file, $header);
 
 foreach ($raw as $war) {
     $row = [
-        'Map' => $war['map'],
-        'Visitor/Neutral' => $war['team1'],
-        'PTS' => $war['t1_score'],
-        'Home/Neutral' => $war['team2'],
-        'PTS' => $war['t2_score'],
+        'Map' => trim($war['map']),
+        'Team1' => trim($war['team1']),
+        'Team1 PTS' => trim($war['t1_score']),
+        'Team2' => trim($war['team2']),
+        'Team2 PTS' => trim($war['t2_score']),
     ];
     fputcsv($file, $row);
 }
