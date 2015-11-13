@@ -63,8 +63,8 @@ print dataset.ix[:5]
 y_true = dataset["Team1Win"].values
 
 clf = DecisionTreeClassifier()
-X_previouswins = dataset[["Team1LastWin", "Team2LastWin", "Team1RanksHigher", "Team2RanksHigher"]].values
+X_homehigher = dataset[["Team1LastWin", "Team2LastWin", "Team1RanksHigher", "Team2RanksHigher"]].values
 
-scores = cross_val_score(clf, X_previouswins, y_true,
+scores = cross_val_score(clf, X_homehigher, y_true,
 scoring='accuracy')
 print("Accuracy: {0:.1f}%".format(np.mean(scores) * 100))
