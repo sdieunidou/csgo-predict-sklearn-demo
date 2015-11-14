@@ -1,4 +1,4 @@
-# Predictor
+# CS:GO Result Predictor
 
 RandomForestClassifier is used to make predictions.
 
