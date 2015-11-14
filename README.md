@@ -37,6 +37,5 @@ php crawler.php
 ## Generate dataset
 
 ```
-cd data/
 php generate_csv.php
 ```
