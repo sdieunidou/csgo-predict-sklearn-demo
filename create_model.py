@@ -62,8 +62,8 @@ for index, row in dataset.iterrows():
 
    row["Team1LastWin"] = int(won_last[team1])
    row["Team2LastWin"] = int(won_last[team2])
-   row["Team1RanksHigher"] = int(team1_rank < team2_rank)
-   row["Team2RanksHigher"] = int(team2_rank < team1_rank)
+   row["Team1RanksHigher"] = int(team1_rank > team2_rank)
+   row["Team2RanksHigher"] = int(team2_rank > team1_rank)
    row["Result"] = result
    row["Team1WonLast"] = 1 if last_match_winner[teams] == row["Team1"] else 0
 
