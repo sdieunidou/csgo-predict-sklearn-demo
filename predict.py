@@ -20,7 +20,7 @@ for index, row in dataset.iterrows():
 
    dataset.ix[index] = row
 
-y_true = dataset["Team1Win"].values
+y_true = dataset["Result"].values
 X_teams_expanded = dataset[["Team1", "Team2", "Map", "Team1LastWin", "Team2LastWin", "Team1RanksHigher", "Team2RanksHigher", "Team1WonLast"]].values
 
 clf = RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
