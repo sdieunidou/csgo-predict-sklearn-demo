@@ -12,6 +12,7 @@ if (false === $file = fopen('raw/dataset.csv', 'w')) {
 }
 
 $header = [
+    'Date',
     'Map',
     'Visitor/Neutral',
     'PTS',

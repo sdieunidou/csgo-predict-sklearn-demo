@@ -35,7 +35,7 @@ ranking = {
 won_last = defaultdict(int)
 last_match_winner = defaultdict(int)
 
-for index, row in dataset.sort("Date").iterrows():
+for index, row in dataset.sort_values("Date").iterrows():
    team1 = row["Team1"]
    team2 = row["Team2"]
 
