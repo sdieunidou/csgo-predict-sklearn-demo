@@ -6,12 +6,12 @@ import csv
 
 dataset = pd.read_csv('data/raw/dataset.csv')
 dataset.columns = ["Map", "Team1", "Team1Pts", "Team2", "Team2Pts"]
-dataset["Team1Win"] = 0
 dataset["Team1LastWin"] = 0
 dataset["Team2LastWin"] = 0
 dataset["Team1RanksHigher"] = 0
 dataset["Team2RanksHigher"] = 0
 dataset["Team1WonLast"] = 0
+dataset["Result"] = 0
 
 ranking = {
    'EnVyUs': 1,
@@ -54,20 +54,26 @@ for index, row in dataset.iterrows():
 
    teams = tuple(sorted([team1, team2]))
 
+   result = 0
+   if row["Team1Pts"] > row["Team2Pts"]:
+      result = 1
+   elif row["Team1Pts"] > row["Team2Pts"]:
+      result = 2
+
    row["Team1LastWin"] = int(won_last[team1])
    row["Team2LastWin"] = int(won_last[team2])
    row["Team1RanksHigher"] = int(team1_rank < team2_rank)
    row["Team2RanksHigher"] = int(team2_rank < team1_rank)
-   row["Team1Win"] = int(row["Team1Pts"] > row["Team2Pts"])
+   row["Result"] = result
    row["Team1WonLast"] = 1 if last_match_winner[teams] == row["Team1"] else 0
 
    dataset.ix[index] = row
 
-   won_last[team1] = row["Team1Win"]
-   won_last[team2] = not row["Team1Win"]
+   won_last[team1] = row["Result"] == 1
+   won_last[team2] = row["Result"] == 2
 
-   winner = row["Team1"] if row["Team1Win"] else row["Team2"]
+   winner = row["Team1"] if row["Result"] == 1 else row["Team2"]
    last_match_winner[teams] = winner
 
-X_teams_expanded = dataset[["Team1", "Team2", "Map", "Team1LastWin", "Team2LastWin", "Team1RanksHigher", "Team2RanksHigher", "Team1WonLast"]].values
+X_teams_expanded = dataset[["Result", "Team1", "Team2", "Map", "Team1LastWin", "Team2LastWin", "Team1RanksHigher", "Team2RanksHigher", "Team1WonLast"]].values
 dataset.to_csv("data/samples.csv")
