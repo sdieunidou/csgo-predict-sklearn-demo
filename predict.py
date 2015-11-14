@@ -87,8 +87,8 @@ y_true = dataset["Team1Win"].values
 X_teams_expanded = dataset[["Team1", "Team2", "Map", "Team1LastWin", "Team2LastWin", "Team1RanksHigher", "Team2RanksHigher", "Team1WonLast"]].values
 
 clf = RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-            max_depth=None, max_features=3, max_leaf_nodes=None,
-            min_samples_leaf=6, min_samples_split=2,
+            max_depth=None, max_features=5, max_leaf_nodes=None,
+            min_samples_leaf=6, min_samples_split=3,
             min_weight_fraction_leaf=0.0, n_estimators=1000, n_jobs=2,
             oob_score=False, random_state=None, verbose=0,
             warm_start=False)
