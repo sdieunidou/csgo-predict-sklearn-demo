@@ -1,13 +1,13 @@
 <?php
 
-$content = file_get_contents(__DIR__ . '/raw/raw.json');
+$content = file_get_contents(__DIR__ . '/data/raw/raw.json');
 if (false === $content) {
    throw new Exception('missing raw data');
 }
 
 $raw = json_decode($content, true);
 
-if (false === $file = fopen('raw/dataset.csv', 'w')) {
+if (false === $file = fopen('data/raw/dataset.csv', 'w')) {
    throw new Exception('cant write in raw/dataset.csv');
 }
 
