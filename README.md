@@ -14,31 +14,3 @@ php crawler.php
 cd data/
 php generate_csv.php
 ```
-
-## Show samples after normalization
-
-```
-python show_dataset.py
-
-       Map     Team1  Team1Pts        Team2  Team2Pts Team1Win Team2Win Team1LastWin Team2LastWin
-0    cache   x6tence         4     overGame        16     True    False        False        True
-1   mirage  overGame         8      x6tence        16    False     True        True         True
-2  inferno     Titan        16  HellRaisers         7     True    False        False        False
-3  inferno  FlipSid3        12           SK        16    False     True        True         False
-4    train        SK        16     FlipSid3        13     True    False        False        False
-5   mirage  FlipSid3        16           SK         7    False     True        False        True
-```
-
-## Accuracy with last win feature
-
-```
-python accuracy_feature_lastwin.py
-Accuracy: 56.7%
-```
-
-## Accuracy with last win feature + hltv top ranking
-
-```
-python accuracy_feature_ranking.py
-Accuracy: 57.0%
-```
