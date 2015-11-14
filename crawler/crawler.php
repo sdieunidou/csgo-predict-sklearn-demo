@@ -52,7 +52,12 @@ foreach ($pages as $i => $page) {
     $crawler->filter('.covMainBoxContent > div > div > div > a')->each(function($node) use(&$matches) {
         $href = $node->attr('href');
         if (preg_match('#matchid#', $href, $m)) {
-            $matches[] = $href;
+            $date = str_replace(' ', '-', $node->text());
+            $date = str_replace('-', '/', $date);
+            $matches[] = [
+                'href' => $href,
+                'date' => $date
+            ];
         }
     });
 }
@@ -64,7 +69,7 @@ $wars = [];
 foreach ($matches as $i => $war) {
     echo sprintf("Get match %d on %d\n", $i+1, count($matches));
 
-    $content = getPage('http://www.hltv.org' . $war);
+    $content = getPage('http://www.hltv.org' . $war['href']);
     $crawler = (new Crawler());
     $crawler->addContent($content);
 
@@ -102,8 +107,9 @@ foreach ($matches as $i => $war) {
     });
 
     $wars[] = [
+        'date' => $war['date'],
         'event' => $crawler->filter('#back > div.mainAreaNoHeadline > div.centerNoHeadline > div > div:nth-child(3) > div.covGroupBoxContent > div:nth-child(5) > div > div:nth-child(2) > span > a')->text(),
-        'link' => $war,
+        'link' => $war['href'],
         'map' => $crawler->filter('#back > div.mainAreaNoHeadline > div.centerNoHeadline > div > div:nth-child(3) > div.covGroupBoxContent > div:nth-child(3) > div > div:nth-child(2)')->text(),
         'team1' => $crawler->filter('#back > div.mainAreaNoHeadline > div.centerNoHeadline > div > div:nth-child(3) > div.covGroupBoxContent > div:nth-child(13) > div > div:nth-child(1) > a')->text(),
         'team2' => $crawler->filter('#back > div.mainAreaNoHeadline > div.centerNoHeadline > div > div:nth-child(3) > div.covGroupBoxContent > div:nth-child(15) > div > div:nth-child(1) > a')->text(),
