@@ -37,8 +37,8 @@ parameter_space = {
  "min_samples_leaf": [3, 4, 5, 6, 7, 8, 9, 10],
 }
 clf = RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-            max_depth=None, max_features=3, max_leaf_nodes=None,
-            min_samples_leaf=9, min_samples_split=2,
+            max_depth=None, max_features='auto', max_leaf_nodes=None,
+            min_samples_leaf=10, min_samples_split=2,
             min_weight_fraction_leaf=0.0, n_estimators=1000, n_jobs=2,
             oob_score=False, random_state=None, verbose=0,
             warm_start=False)
