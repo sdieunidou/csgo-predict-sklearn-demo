@@ -14,3 +14,18 @@ php crawler.php
 cd data/
 php generate_csv.php
 ```
+
+## Generate transformed CSV
+
+```
+python create_model.py
+```
+
+
+## Predict submissions
+
+Predictor use submissions contain in `data/submission.csv` file.
+
+```
+python predict.py
+```
