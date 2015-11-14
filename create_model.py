@@ -57,7 +57,7 @@ for index, row in dataset.iterrows():
    result = 0
    if row["Team1Pts"] > row["Team2Pts"]:
       result = 1
-   elif row["Team1Pts"] > row["Team2Pts"]:
+   elif row["Team2Pts"] > row["Team1Pts"]:
       result = 2
 
    row["Team1LastWin"] = int(won_last[team1])
