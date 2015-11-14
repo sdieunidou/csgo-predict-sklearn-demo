@@ -21,6 +21,12 @@ php generate_csv.php
 
 RandomForestClassifier is used to make predictions.
 
+## Features implemented
+
+* Team has win this lasted match played
+* Team1 has win this lasted match against Team2
+* Team1 is ranked better than Team2 (use HLTV ranking)
+
 ## Generate transformed CSV
 
 ```
