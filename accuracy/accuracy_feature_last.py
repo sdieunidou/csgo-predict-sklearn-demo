@@ -4,7 +4,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.cross_validation import cross_val_score
 from collections import defaultdict
 
-dataset = pd.read_csv('data/raw/dataset.csv')
+dataset = pd.read_csv('../data/raw/dataset.csv')
 dataset.columns = ["Map", "Team1", "Team1Pts", "Team2", "Team2Pts"]
 dataset["Team1Win"] = dataset["Team1Pts"] > dataset["Team2Pts"]
 dataset["Team1LastWin"] = False;

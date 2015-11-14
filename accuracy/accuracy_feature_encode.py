@@ -4,10 +4,9 @@ from sklearn.grid_search import GridSearchCV
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.cross_validation import cross_val_score
 from sklearn.preprocessing import LabelEncoder
-from collections import defaultdict
 from sklearn.ensemble import RandomForestClassifier
 
-dataset = pd.read_csv('data/samples.csv')
+dataset = pd.read_csv('../data/samples.csv')
 
 teams = np.concatenate([dataset["Team1"].values, dataset["Team2"].values]).T
 encoding = LabelEncoder()

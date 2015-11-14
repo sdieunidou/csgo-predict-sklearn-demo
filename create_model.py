@@ -1,11 +1,8 @@
 import pandas as pd
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
 from collections import defaultdict
-import csv
 
-dataset = pd.read_csv('data/raw/dataset.csv')
-dataset.columns = ["Map", "Team1", "Team1Pts", "Team2", "Team2Pts"]
+dataset = pd.read_csv('data/raw/dataset.csv', parse_dates=["Date"])
+dataset.columns = ["Date", "Map", "Team1", "Team1Pts", "Team2", "Team2Pts"]
 dataset["Team1LastWin"] = 0
 dataset["Team2LastWin"] = 0
 dataset["TeamHigher"] = 0
@@ -38,7 +35,7 @@ ranking = {
 won_last = defaultdict(int)
 last_match_winner = defaultdict(int)
 
-for index, row in dataset.iterrows():
+for index, row in dataset.sort("Date").iterrows():
    team1 = row["Team1"]
    team2 = row["Team2"]
 
@@ -79,5 +76,5 @@ for index, row in dataset.iterrows():
    winner = row["Team1"] if row["Result"] == 1 else row["Team2"]
    last_match_winner[teams] = winner
 
-X_teams_expanded = dataset[["Result", "Team1", "Team2", "Map", "Team1LastWin", "Team2LastWin", "TeamHigher", "Team1WonLast"]].values
+X_teams_expanded = dataset[["Result", "Date", "Team1", "Team2", "Map", "Team1LastWin", "Team2LastWin", "TeamHigher", "Team1WonLast"]].values
 dataset.to_csv("data/samples.csv")
