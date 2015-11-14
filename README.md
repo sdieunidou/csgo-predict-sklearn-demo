@@ -2,6 +2,8 @@
 
 ## Crawler
 
+The crawler retrieve data of past 3 months from hltv.org.
+
 ```
 cd crawler/
 composer install -o
@@ -15,12 +17,15 @@ cd data/
 php generate_csv.php
 ```
 
+# Predictor
+
+RandomForestClassifier is used to make predictions.
+
 ## Generate transformed CSV
 
 ```
 python create_model.py
 ```
-
 
 ## Predict submissions
 
