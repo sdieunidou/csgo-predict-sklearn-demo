@@ -39,14 +39,6 @@ ranking = {
 won_last = defaultdict(int)
 last_match_winner = defaultdict(int)
 
-teams = np.concatenate([dataset["Team1"].values, dataset["Team2"].values]).T
-encoding = LabelEncoder()
-encoding.fit(teams)
-
-maps = dataset["Map"].values
-encodingMaps = LabelEncoder()
-encodingMaps.fit(maps)
-
 for index, row in dataset.iterrows():
    team1 = row["Team1"]
    team2 = row["Team2"]
@@ -68,9 +60,6 @@ for index, row in dataset.iterrows():
    row["Team2RanksHigher"] = int(team2_rank < team1_rank)
    row["Team1Win"] = int(row["Team1Pts"] > row["Team2Pts"])
    row["Team1WonLast"] = 1 if last_match_winner[teams] == row["Team1"] else 0
-   row["Team1"] = encoding.transform([team1])[0]
-   row["Team2"] = encoding.transform([team2])[0]
-   row["Map"] = encodingMaps.transform([row["Map"]])[0]
 
    dataset.ix[index] = row
 
