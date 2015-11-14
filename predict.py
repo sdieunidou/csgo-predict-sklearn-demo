@@ -21,7 +21,7 @@ for index, row in dataset.iterrows():
    dataset.ix[index] = row
 
 y_true = dataset["Result"].values
-X_teams_expanded = dataset[["Team1", "Team2", "Map", "Team1LastWin", "Team2LastWin", "Team1RanksHigher", "Team2RanksHigher", "Team1WonLast"]].values
+X_teams_expanded = dataset[["Team1", "Team2", "Map", "Team1LastWin", "Team2LastWin", "TeamHigher", "Team1WonLast"]].values
 
 clf = RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
             max_depth=None, max_features=5, max_leaf_nodes=None,
@@ -33,7 +33,7 @@ clf = RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini'
 clf.fit(X_teams_expanded, y_true)
 
 dataset = pd.read_csv("data/submission.csv")
-dataset.columns = ["Team1", "Team2", "Map", "Team1LastWin", "Team2LastWin", "Team1RanksHigher", "Team2RanksHigher", "Team1WonLast"]
+dataset.columns = ["Team1", "Team2", "Map", "Team1LastWin", "Team2LastWin", "TeamHigher", "Team1WonLast"]
 
 for index, row in dataset.iterrows():
    team1 = row["Team1"]
@@ -44,6 +44,6 @@ for index, row in dataset.iterrows():
 
    dataset.ix[index] = row
 
-X_submission = dataset[["Team1", "Team2", "Map", "Team1LastWin", "Team2LastWin", "Team1RanksHigher", "Team2RanksHigher", "Team1WonLast"]].values
+X_submission = dataset[["Team1", "Team2", "Map", "Team1LastWin", "Team2LastWin", "TeamHigher", "Team1WonLast"]].values
 
 print clf.predict(X_submission)
