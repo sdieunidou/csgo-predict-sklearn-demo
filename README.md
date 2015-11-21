@@ -24,16 +24,6 @@ python predict.py
 
 # Data
 
-## Crawler
-
-The crawler retrieve data of past 3 months from hltv.org.
-
-```
-cd crawler/
-composer install -o
-php crawler.php
-```
-
 ## Generate dataset
 
 ```
