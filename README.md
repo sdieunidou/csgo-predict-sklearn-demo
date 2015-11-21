@@ -1,6 +1,7 @@
-# CS:GO Result Predictor
+# CS:GO Match Predictor
 
 RandomForestClassifier is used to make predictions.
+This projet was just a demo of RandomForestClassifier usage with sklearn.
 
 ## Features implemented
 
